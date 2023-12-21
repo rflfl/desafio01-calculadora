@@ -40,6 +40,29 @@ const App = () => {
     }
   }
 
+  const handleMultiplicationNumbers = () => {
+    if (firstNumber === '0') {
+      setFirstNumber(currentNumber)
+      setCurrentNumber('0')
+      setOperation('*')
+    } else {
+      const mult =  Number(firstNumber) * Number(currentNumber)
+      setCurrentNumber(String(mult))
+      setOperation('')
+    }
+  }
+  const handleDivisionNumbers = () => {
+    if (firstNumber === '0') {
+      setFirstNumber(currentNumber)
+      setCurrentNumber('0')
+      setOperation('/')
+    } else {
+      const div =  Number(firstNumber) / Number(currentNumber)
+      setCurrentNumber(String(div))
+      setOperation('')
+    }
+  }
+
   const handleEquals = () => {
     if (firstNumber !== '0' && operation !== '' && currentNumber !== '0') {
       switch (operation) {
@@ -48,6 +71,12 @@ const App = () => {
           break;
         case '-':
           handleMinusNumbers()
+          break;
+        case '*':
+          handleMultiplicationNumbers()
+          break;
+        case '/':
+          handleDivisionNumbers()
           break;
         default:
           break;
@@ -60,8 +89,8 @@ const App = () => {
       <Content>
         <Input value={currentNumber} />
         <Row>
-          <Button label="x" onCLick={() => handleAddNumber('x')} />
-          <Button label="/" onCLick={() => handleAddNumber('/')} />
+          <Button label="x" onCLick={handleMultiplicationNumbers} />
+          <Button label="/" onCLick={handleDivisionNumbers} />
           <Button label="C" onCLick={() => handleOnClear()} />
           <Button label="X" onCLick={() => handleAddNumber('X')} />
         </Row>
