@@ -19,7 +19,7 @@ const App = () => {
   const handleSumNumbers = () => {
     if (firstNumber === '0') {
       setFirstNumber(currentNumber)
-      handleOnClear()
+      setCurrentNumber('0')
       setOperation('+')
     } else {
       const sum =  Number(firstNumber) + Number(currentNumber)
@@ -31,7 +31,7 @@ const App = () => {
   const handleMinusNumbers = () => {
     if (firstNumber === '0') {
       setFirstNumber(currentNumber)
-      handleOnClear()
+      setCurrentNumber('0')
       setOperation('-')
     } else {
       const subt =  Number(firstNumber) - Number(currentNumber)
